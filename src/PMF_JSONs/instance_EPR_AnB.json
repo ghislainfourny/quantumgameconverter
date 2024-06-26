@@ -1,5 +1,5 @@
 {
-    "$schema": "EPMF_schema.jschema",
+    "$schema": "PMF_schema.jschema",
     "ProcessMatrixFramework": {
         "Labs": [
             {
@@ -19,12 +19,12 @@
                         ]
                     }
                 ],
-                "NumberOfOutQubits": 1
+                "NumberOfOutQubits": 2
             },
             {
                 "Name": "End",
                 "Index": 1,
-                "NumberOfInQubits": 1,
+                "NumberOfInQubits": 2,
                 "Measurements": [
                     {
                         "MeasurementAxisIndex": 0,
@@ -146,14 +146,15 @@
             },
             {
                 "From": {
-                    "LabIdx": 2,
-                    "OutQubitLocalIdx": 0
+                    "LabIdx": 0,
+                    "OutQubitLocalIdx": 1
                 },
                 "To": {
                     "LabIdx": 3,
                     "InQubitLocalIdx": 0
                 }
-            },{
+            },
+            {
                 "From": {
                     "LabIdx": 3,
                     "OutQubitLocalIdx": 0
@@ -161,6 +162,16 @@
                 "To": {
                     "LabIdx": 1,
                     "InQubitLocalIdx": 0
+                }
+            },
+            {
+                "From": {
+                    "LabIdx": 2,
+                    "OutQubitLocalIdx": 0
+                },
+                "To": {
+                    "LabIdx": 1,
+                    "InQubitLocalIdx": 1
                 }
             }
         ]

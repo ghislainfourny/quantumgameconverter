@@ -6,20 +6,25 @@ Requirements are in the requierements.txt file.
 
 ## Execution
 
-To run the converter place the PMF JSON file in folder "0_Oxygen/EPMF", add the path to this file in main.py and run ```python main.py```.  
-The ouput is, on one side, the GEFI JSON file in folder "0_Oxygen/GEFI", and on the other side the PMF graph, the causal structure graph as well as the GEFI graph in png format in folder "3_Figures".
+To run the converter you can either use a pre-existing PMF quantum experiment or add your own. To add your own place the PMF JSON file in folder "src/PMF_JSONs/", add the path in main.py and run ```python main.py```.  
+
+Outputs are:  
+- the PMF, the causal structure and the GEFII graphs in png format in folder "src/Figures_PNG/"  
+- the GEFII JSON file in folder "src/GEFII_JSONs/".  
+
+The code output whether the input PMF JSON and the output GEFII JSON files are well-formed and valid given the JSON schemas stored in their respective folders "PMF_JSONs/" and GEFII_JSONs/"
 
 ## Results
-Take a look at the results given a quantum experiment defined as:  
+Take a look at the outputs for an example quantum experiment. It is defined as:  
 1. Lab A and B both receive an input state from lab Start.    
 2. They both choose a measurement basis and execute a measurement.  
 3. Finally, they send their output states to End.  
 
 Process matrix framework graph:  
-<img src="/3_Figures/instance_EPR_AnB_PMF_graph.png" width="256"/>
+<img src="/src/Figures_PNG/instance_EPR_AnB_PMF_graph.png" width="256"/>
 
 Causal structure graph:  
-<img src="/3_Figures/instance_EPR_AnB_CS_graph.png" width="256"/>
+<img src="/src/Figures_PNG/instance_EPR_AnB_CS_graph.png" width="256"/>
 
 Game in extensive form with imperfect information graph:  
-<img src="/3_Figures/instance_EPR_AnB_GEFI_graph.png" width="512"/>
+<img src="/src/Figures_PNG/instance_EPR_AnB_GEFII_graph.png" width="512"/>

@@ -1,36 +1,41 @@
-import EPMF_class as epmf
-import GEFI_class as gefi
-import utils as utils
+from src import PMF_class as pmf
+from src import GEFII_class as gefii
+from src import utils
+PATH_TO_FIGURES = "src/Figures_PNG/"
+PATH_TO_GEFII_JSONS = "src/GEFII_JSONs/"
+PATH_TO_PMF_JSONS = "src/PMF_JSONs/"
+
 
 def main():
-    # List of EPMF instances available in the folder "0_Oxygen/EPMF"
+    """Main works as an example how to use our library."""
+    # List of example PMF instances currently available in folder "src/PMF_JSONs"
     file_names = ["instance_simpleA1",
                   "instance_doubleA1",
-                 "instance_EPR_AnB",
-                 "instance_EPR_A2B",
-                 "instance_EPR_A2nB",
-                 "instance_EPR_C2A2nB",
-                 "instance_EPR_C2AnB",
-                 "instance_simpleAloop"]
-    # Select which one to run
-    file_name = file_names[6]
-    # Loads the selected EPMF into a dictionary 
-    PMF_json = utils.load_PMF_json(str(file_name + ".json"))
-    # Create EPMF class object and produces the corresponding PMF graph in folder "3_Figures"
-    EPMF = epmf.EPMF(PMF_json, str("3_Figures/"+file_name), PLOT=True)
-    # TODO Get the probabilities for given measurement axis and measurement outcome.
-    # TODO EPMF.get_probabilities()
-    
-    # Initialise a GEFI object
-    GEFI = gefi.GEFI()
-    # Maps from the EPMF to the GEFI and stores the corresponding causal structure (CS) graph in "3_Figures"
-    GEFI_json = GEFI.map_PMF2GEFI(PMF_json, str("3_Figures/"+file_name), PLOT=True)
-    # Check if the produced object is well-formed and valid given the GEFI JSON schema
-    GEFI.GEFI_validate(GEFI_json, True)
-    # Store the GEFI graph in "3_Figures"
-    GEFI.visualize_GEFI(GEFI_json, str("3_Figures/"+file_name), PLOT=True) # FAIL -> want a tree like representation
-    # Save GEFI in a JSON file in folder "0_Oxygen/GEFI"
-    utils.save_to_json(GEFI_json,"0_Oxygen/GEFI/PMF2GEFI_1.json")
+                  "instance_EPR_AnB",
+                  "instance_EPR_A2B",
+                  "instance_EPR_A2nB",
+                  "instance_EPR_C2A2nB",
+                  "instance_EPR_C2AnB",
+                  "instance_simpleAloop"
+                  ]
+    # Select a quantum experiment
+    user_chosen_file = 2
+    file_name = file_names[user_chosen_file]
+    # Loads the selected PMF into a dictionary
+    PMF_json = utils.load_PMF_json(str(file_name+".json"), PATH_TO_PMF_JSONS)
+    # Creates PMF class object and produces the corresponding PMF graph in the figures folder
+    PMF = pmf.PMF(PATH_TO_PMF_JSONS, PMF_json, file_name, PATH_TO_FIGURES, plot_PMF=True)
 
+    # Create a GEFII object based on the PMF_json object.
+    GEFII = gefii.GEFII(PATH_TO_GEFII_JSONS, PATH_TO_FIGURES, PMF_json,
+                        file_name, plot_CS=True,plot_GEFII=True
+                        )
+    # Checks if the produced object is well-formed and valid given the GEFII JSON schema.
+    GEFII.validate_GEFII(message=True)
+    # Stores the GEFII graph in the figures folder
+    GEFII.visualize_GEFII(plot_GEFII=True) # FAIL -> want a tree like representation
+    # Saves the GEFII in a JSON file in the GEFII JSON folder
+    GEFII.save_GEFII_to_json()
+    
 if __name__ == "__main__":
     main()

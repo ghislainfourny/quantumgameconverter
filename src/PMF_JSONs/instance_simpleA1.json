@@ -1,5 +1,5 @@
 {
-    "$schema": "EPMF_schema.jschema",
+    "$schema": "PMF_schema.jschema",
     "ProcessMatrixFramework": {
         "Labs": [
             {
@@ -31,29 +31,6 @@
                         "CPMaps": [
                             {
                                 "MeasurementOutcomeIndex": 0,
-                                "CPMap": [
-                                    [0]
-                                ]
-                            },
-                            {
-                                "MeasurementOutcomeIndex": 1,
-                                "CPMap": [
-                                    [0]
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "MeasurementAxisIndex": 1,
-                        "CPMaps": [
-                            {
-                                "MeasurementOutcomeIndex": 0,
-                                "CPMap": [
-                                    [0]
-                                ]
-                            },
-                            {
-                                "MeasurementOutcomeIndex": 1,
                                 "CPMap": [
                                     [0]
                                 ]

@@ -1,5 +1,5 @@
 {
-    "$schema": "EPMF_schema.jschema",
+    "$schema": "PMF_schema.jschema",
     "ProcessMatrixFramework": {
         "Labs": [
             {
